@@ -1,0 +1,84 @@
+What?
+"Metropolitan Convention Center" has a great needs of a web site where anyone may sign-up and buy tickets for events held in the center.
+ 
+Below are the things that need to be done:
+Create a login for the site
+Login to the site
+Look at a list of events
+Register for one or more events
+
+We will incorporate microservice design architectural paradigm to ensure that each application service can meet the needs of development. 
+
+Below is the possible components of files that will need to be established:
+Src:
+Event.java
+User.java
+Registration.java
+RestAPI:
+EventAPI.java
+UserAPI.java
+RestController related files
+Html Files
+Login page
+Event displaying page based on user
+Event Registration form
+Create account page
+Database related files
+
+
+Why?
+This would help users with better login.
+
+How?
+
+<<TODO: DIAGRAM TO BE ADDED>>
+
+Below is the list of technologies - they will be added on:
+Git - we will use Git version control to upgrade the codebase.
+Gradle - for dependency build, we will use Gradle.
+Java - the programming language for RESTful APIs
+Spring/Spring Boot - the necessary framework for RESTful APIs
+Eclipse - The development editor
+Docker/Kubernetes - For containerization efforts
+DevOps-based approach
+Microservices with 12 factor approaches
+ 
+ 
+ 
+Backlog
+Phase 1: Set up necessary configurations/frameworks
+Set up gradle/maven environment
+Set up a github repository for EventManagement codebase.
+Set up Java Spring Framework
+Get github keys tokens set up
+Make sure that everyone has a local repository
+To be added on: DockerFile, Kubernetes set up,
+Create blank files that we will implement (basically file systems)
+ 
+Phase 2: Implement the necessary classes/objects in JAVA
+Come up with domains (classes) for necessary use. Below is the list:
+Customer: Customer class that holds attributes about individual customers that want to be added into the event management system.
+Event: Events that will take place
+Registration
+Phase 3: Implement the necessary and basic CRUD
+Create necessary and simple pages for each functionality
+A login page into the site
+A page for list of events
+A page to register events
+Establish Spring APIs for basic CRUD
+Setup Java API pages for the following:
+EventAPI
+RegistrationAPI
+UserAPI
+Establish JDBC for users information
+Not only do we want to have user log in, but we want to make sure that the data are being retrieved and saved.
+Phase 4: Security/authorization enforcement on the implementation
+Implement Auth mechanism for account login
+Tokenization
+ 
+Out of Scope:
+The frontend aspect of this implementation - it is a stretch. Only basic implementations of login, displaying event list per user, registering for an event are necessary.
+
+
+
+
