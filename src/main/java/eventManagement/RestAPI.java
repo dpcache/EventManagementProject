@@ -14,10 +14,19 @@ public class RestAPI {
 	@Autowired
 	private GameSummaryDAO gameSummaryDAO;
 	
+	@Autowired
+	private EventDAO eventDAO;
+	
 	@CrossOrigin
 	@GetMapping("/gamesummary")
 	public Collection<GameSummary> getGameSummarys() {
 		return gameSummaryDAO.getAllGameSummarys();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/events")
+	public Collection<Event> getEvents() {
+		return eventDAO.getAllEvents();
 	}
 	
 }
