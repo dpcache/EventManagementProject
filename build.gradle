@@ -12,9 +12,9 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'maven'
 apply plugin: 'application'
 
-group = 'roshambo'
-description = "roshambo"
-mainClassName = "roshambo.App"
+group = 'EventManagementProject'
+description = "EventManagementProject"
+mainClassName = "eventManagement.App"
 
 sourceCompatibility = 11
 targetCompatibility = 11
