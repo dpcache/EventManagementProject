@@ -17,6 +17,9 @@ public class RestAPI {
 	@Autowired
 	private EventDAO eventDAO;
 	
+	@Autowired
+	private CustomerDAO customerDAO;
+	
 	@CrossOrigin
 	@GetMapping("/gamesummary")
 	public Collection<GameSummary> getGameSummarys() {
@@ -27,6 +30,12 @@ public class RestAPI {
 	@GetMapping("/events")
 	public Collection<Event> getEvents() {
 		return eventDAO.getAllEvents();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/customers")
+	public Collection<Customer> getCustomers() {
+		return customerDAO.getAllCustomers();
 	}
 	
 }
