@@ -15,9 +15,22 @@ public class EventDAO  {
 	JdbcTemplate jdbcTemplate;
 
 	public Event addEvent(Event event) {
-        String sql = "INSERT INTO EVENTS (EVENTNAME, PERFORMER, PRICE, TIMEPLAYED) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, event.getEventName(), event.getPerformer(), event.getPrice(), event.getTimeStarted());
+        String sql = "INSERT INTO EVENTS (CODE, TITLE, DESCRIPTION) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, event.getCode(), event.getTitle(), event.getDescription());
         return event;
+	}
+	
+	//updating preexisting data.
+	public Event updateEvent(Event event, int id) {
+		String sql = "UPDATE EVENTS SET code=?, title=?, description=? WHERE id=?";
+		jdbcTemplate.update(sql,event.getCode(), event.getTitle(), event.getDescription(), id);
+		return event;
+	}
+	
+	public void deleteEvent(int id) {
+		String sql = "DELETE FROM EVENTS WHERE id=?";
+		jdbcTemplate.update(sql,id);
+		return;
 	}
 
 	public Collection<Event> getAllEvents() {
