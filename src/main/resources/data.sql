@@ -8,3 +8,6 @@ insert into EVENTS (EVENTNAME, PERFORMER, PRICE, TIMESTARTED)
 values('Piano Concerto No.7 of Beethoven','Jay-Z', 22.00,'2012-05-12 00:00:00.0');
 insert into EVENTS (EVENTNAME, PERFORMER, PRICE, TIMESTARTED)
 values('Violin Converto','Eminem', 22.03,'2012-05-12 00:00:00.0');
+insert into CUSTOMERS (USERID, NAME, EMAIL, TIMESTARTED)
+values(123,'Jay-Z', 'jayz@gmail.com','2012-05-12 00:00:00.0');
+
