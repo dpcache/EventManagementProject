@@ -40,15 +40,16 @@ public class RestAPI {
 	}
 	
 	@CrossOrigin
-	@PutMapping("/event/{id}")
+	@PutMapping("/events/{id}")
 	public Event updateEvent(@PathVariable("id") int id, Event event) {
 		eventService.update(id, event);
 		return event;
 	}
 	
 	@CrossOrigin
-	@DeleteMapping("/event/{id}")
+	@DeleteMapping("/events/{id}")
 	public void deleteEvent(@PathVariable("id") int id) {
+		System.out.println("In deleteEvent method.");
 		eventService.delete(id);
 	}
 	
