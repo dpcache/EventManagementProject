@@ -10,9 +10,9 @@ public class MockCustomerService implements CustomerService {
 	static ArrayList<Customer> customers = new ArrayList<Customer>();
 	
 	static {
-		Customer e1 = new Customer("Bob", "bob@gmail.com", "Begi555nner");
-		Customer e2 = new Customer("Tom", "jesse@gmail.com", "123Intermediate");
-		Customer e3 = new Customer("JPotato", "potato@gmail.com", "4dvacned");
+		Customer e1 = new Customer(1, "Bob", "bob@gmail.com", "Begi555nner");
+		Customer e2 = new Customer(2, "Tom", "jesse@gmail.com", "123Intermediate");
+		Customer e3 = new Customer(3, "JPotato", "potato@gmail.com", "4dvacned");
 		customers.add(e1);
 		customers.add(e2);
 		customers.add(e3);
