@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestAPI {
 	
 	static EventService eventService = new MockEventService();
+	static CustomerService customerService = new MockCustomerService();
 	
 	@CrossOrigin
 	@GetMapping("/events")
@@ -52,6 +53,37 @@ public class RestAPI {
 		eventService.delete(id);
 	}
 	
+	@CrossOrigin
+	@GetMapping("/customers")
+	public Collection<Customer> getAllCustomers() {
+		return customerService.getCustomers();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/customer/{id}")
+	public Customer getCustomer(@PathVariable("id") int id) {
+		return customerService.getCustomerById(id);
+	}
+	
+	@CrossOrigin
+	@PostMapping("/customers")
+	public Customer addCustomer(@RequestBody Customer customer) {
+		customerService.createCustomer(customer);
+		return customer;
+	}
+	
+	@CrossOrigin
+	@PutMapping("/customer/{id}")
+	public Customer updateCustomer(@PathVariable("id") int id, Customer customer) {
+		customerService.update(id, customer);
+		return customer;
+	}
+	
+	@CrossOrigin
+	@DeleteMapping("/customer/{id}")
+	public void deleteCustomer(@PathVariable("id") int id) {
+		customerService.delete(id);
+	}
 	
 //	//We do not use the dummy data "events" here.
 //	@CrossOrigin
