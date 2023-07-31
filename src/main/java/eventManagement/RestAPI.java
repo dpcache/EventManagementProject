@@ -73,14 +73,14 @@ public class RestAPI {
 	}
 	
 	@CrossOrigin
-	@PutMapping("/customer/{id}")
+	@PutMapping("/customers/{id}")
 	public Customer updateCustomer(@PathVariable("id") int id, Customer customer) {
 		customerService.update(id, customer);
 		return customer;
 	}
 	
 	@CrossOrigin
-	@DeleteMapping("/customer/{id}")
+	@DeleteMapping("/customers/{id}")
 	public void deleteCustomer(@PathVariable("id") int id) {
 		customerService.delete(id);
 	}
