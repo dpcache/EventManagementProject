@@ -10,4 +10,5 @@ insert into EVENTS (CODE, TITLE, DESCRIPTION)
 values('CMSC399', 'Intro to Music', 'introduction to music');
 insert into CUSTOMERS (USERID, NAME, EMAIL, TIMESTARTED)
 values(123,'Jay-Z', 'jayz@gmail.com','2012-05-12 00:00:00.0');
-
+insert into REGISTRATIONS (REGISTRATIONID, EVENTID, REGISTRATIONDATE, NOTES)
+values ('10', '1', '2024-07-28 00:00:00.0', 'this is a test event3');
