@@ -13,7 +13,7 @@ public class RegistrationDAO
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	//	this works 7/28/2023 5:30pm
+	//	this works 7/31/2023 5:03 PM except eventId and date is null ???????
 	public List<Registration> getAllRegistrations()
 	{
 		return jdbcTemplate.query("Select * from REGISTRATIONS", new BeanPropertyRowMapper<Registration>(Registration.class));

@@ -2,6 +2,7 @@ package eventManagement;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,32 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestAPI {
 	
 	static EventService eventService = new MockEventService();
+	
+	@Autowired
+	private RegistrationDAO registrationDAO;
+
+//		@PostMapping
+//		@PutMapping("/{eventId}")
+//		@DeleteMapping("/{eventId}")
+		
+	
+	//	return all registrations
+	@CrossOrigin
+	@GetMapping("/registrations")
+	public Collection<Registration> getAllRegistrations()
+	{
+		System.out.println("testttttt");
+		return registrationDAO.getAllRegistrations();
+	}
+
+	// TODO: this
+	//	return registrations with a specific registrationId (id)
+	@GetMapping("/{registrationId}")
+	public Registration getRegistrationId(@PathVariable("registrationId") int registrationId)
+	{
+		System.out.println("We in registrationId");
+		return null;
+	}
 	
 	@CrossOrigin
 	@GetMapping("/events")

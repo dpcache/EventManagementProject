@@ -1,5 +1,11 @@
 package eventManagement;
 
+import javax.persistence.Table;
+
+import org.springframework.data.annotation.Id;
+
+@Table(name = "REGISTRATIONS")
+
 /*
  * @RequestMapping("/api/registrations") {
 
@@ -24,15 +30,18 @@ package eventManagement;
 //	KEEP BEAN AND API SEPERATE (generally)
 public class Registration
 {
+	@Id
 	int id;	//	registrationId in RegistrationAPI.java
-	int event_id;
+	String event_id;
 	String registration_date;
 	String notes;
 	
 	public Registration() {}
 
-	public Registration(int id, int event_id, String registration_date, String notes)
+	public Registration(int id, String event_id, String registration_date, String notes)
 	{
+		System.out.println("event id is " + event_id);
+		System.out.println("registration id is " + registration_date);
 		this.id = id;
 		this.event_id = event_id;
 		this.registration_date = registration_date;
@@ -49,12 +58,12 @@ public class Registration
 		this.id = id;
 	}
 
-	public int getEvent_id()
+	public String getEvent_id()
 	{
 		return event_id;
 	}
 
-	public void setEvent_id(int event_id)
+	public void setEvent_id(String event_id)
 	{
 		this.event_id = event_id;
 	}
