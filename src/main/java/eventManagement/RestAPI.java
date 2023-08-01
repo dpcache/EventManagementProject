@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestAPI {
 	
 	static EventService eventService = new MockEventService();
-	
+	static RegistrationService registrationService = new MockRegistrationService();
 	@Autowired
 	private RegistrationDAO registrationDAO;
 
