@@ -1,10 +1,21 @@
-node {
+pipeline {
+    agent any
+
     tools {
+
         gradle "gradle"
     }
-    
-	stage('Build') {
-		sh 'gradle clean build'
-	}
 
+    stages {
+        stage('Build') {
+            steps {
+
+
+                sh "gradle clean build"
+
+            }
+
+
+        }
+    }
 }
