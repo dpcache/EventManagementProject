@@ -10,9 +10,9 @@ public class MockRegistrationService implements RegistrationService {
 	static ArrayList<Registration> registrations = new ArrayList<Registration>();
 	
 	static {
-		Registration r1 = new Registration("5", "2023-07-28 00:00:00.0", "will this work?");
-		Registration r2 = new Registration("4", "2024-07-28 00:00:00.0", "will this work??");
-		Registration r3 = new Registration("13", "2025-07-28 00:00:00.0", "will this work???");
+		Registration r1 = new Registration(1, 5, "2023-07-28 00:00:00.0", "will this work?");
+		Registration r2 = new Registration(2, 3, "2024-07-28 00:00:00.0", "will this work??");
+		Registration r3 = new Registration(3, 9, "2025-07-28 00:00:00.0", "will this work???");
 		registrations.add(r1);
 		registrations.add(r2);
 		registrations.add(r3);
@@ -30,7 +30,7 @@ public class MockRegistrationService implements RegistrationService {
 
 	@Override
 	public void createRegistration(Registration registration) {
-		registration.add(registration);
+		registrations.add(registration);
 	}
 
 	@Override

@@ -38,13 +38,12 @@ public class RestAPI {
 		return registrationDAO.getAllRegistrations();
 	}
 
-	// TODO: this
 	//	return registrations with a specific registrationId (id)
-	@GetMapping("/{registrationId}")
+	@CrossOrigin
+	@GetMapping("/registrations/{registrationId}")
 	public Registration getRegistrationId(@PathVariable("registrationId") int registrationId)
 	{
-		System.out.println("We in registrationId");
-		return null;
+		return registrationDAO.getRegistrationById(registrationId);
 	}
 	
 	static CustomerService customerService = new MockCustomerService();

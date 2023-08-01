@@ -12,12 +12,18 @@ public class RegistrationDAO
 {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-	
-	//	this works 7/31/2023 5:03 PM except eventId and date is null ???????
+
 	public List<Registration> getAllRegistrations()
 	{
-		return jdbcTemplate.query("Select * from REGISTRATIONS", new BeanPropertyRowMapper<Registration>(Registration.class));
-		// FIXME: Date comes up as null
-		// FIXME: Eventid comes up as 0
+		return jdbcTemplate.query("Select * FROM REGISTRATIONS",
+				new BeanPropertyRowMapper<Registration>(Registration.class));
+	}
+	
+	public Registration getRegistrationById(int id)
+	{
+		String sql = "Select * FROM REGISTRATIONS WHERE id = ?";
+		List<Registration> registrations = jdbcTemplate.query(sql, 
+				new BeanPropertyRowMapper<>(Registration.class), id);
+		return registrations.isEmpty() ? null : registrations.get(0);
 	}
 }
