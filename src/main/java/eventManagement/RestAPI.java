@@ -47,6 +47,8 @@ public class RestAPI {
 		return null;
 	}
 	
+	static CustomerService customerService = new MockCustomerService();
+	
 	@CrossOrigin
 	@GetMapping("/events")
 	public Collection<Event> getAllEvents() {
@@ -67,18 +69,50 @@ public class RestAPI {
 	}
 	
 	@CrossOrigin
-	@PutMapping("/event/{id}")
+	@PutMapping("/events/{id}")
 	public Event updateEvent(@PathVariable("id") int id, Event event) {
 		eventService.update(id, event);
 		return event;
 	}
 	
 	@CrossOrigin
-	@DeleteMapping("/event/{id}")
+	@DeleteMapping("/events/{id}")
 	public void deleteEvent(@PathVariable("id") int id) {
+		System.out.println("In deleteEvent method.");
 		eventService.delete(id);
 	}
 	
+	@CrossOrigin
+	@GetMapping("/customers")
+	public Collection<Customer> getAllCustomers() {
+		return customerService.getCustomers();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/customer/{id}")
+	public Customer getCustomer(@PathVariable("id") int id) {
+		return customerService.getCustomerById(id);
+	}
+	
+	@CrossOrigin
+	@PostMapping("/customers")
+	public Customer addCustomer(@RequestBody Customer customer) {
+		customerService.createCustomer(customer);
+		return customer;
+	}
+	
+	@CrossOrigin
+	@PutMapping("/customers/{id}")
+	public Customer updateCustomer(@PathVariable("id") int id, Customer customer) {
+		customerService.update(id, customer);
+		return customer;
+	}
+	
+	@CrossOrigin
+	@DeleteMapping("/customers/{id}")
+	public void deleteCustomer(@PathVariable("id") int id) {
+		customerService.delete(id);
+	}
 	
 //	//We do not use the dummy data "events" here.
 //	@CrossOrigin
