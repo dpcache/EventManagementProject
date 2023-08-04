@@ -4,10 +4,10 @@ insert into GAMESUMMARY (CLIENTGESTURE, SERVERGESTURE, RESULT, TIMEPLAYED)
 values('PAPER','ROCK','WIN','2011-05-12 00:00:00.0');
 insert into GAMESUMMARY (CLIENTGESTURE, SERVERGESTURE, RESULT, TIMEPLAYED)
 values('SCISSORS','ROCK','LOSS','2012-05-12 00:00:00.0');
-insert into EVENTS (CODE, TITLE, DESCRIPTION)
-values('FMSC170', 'Family Science', 'Learn about xyz');
-insert into EVENTS (CODE, TITLE, DESCRIPTION)
-values('CMSC399', 'Intro to Music', 'introduction to music');
+insert into EVENTS (EVENTID, CODE, TITLE, DESCRIPTION)
+values(1, 'FMSC170', 'Family Science', 'Learn about xyz');
+insert into EVENTS (EVENTID, CODE, TITLE, DESCRIPTION)
+values(2, 'CMSC399', 'Intro to Music', 'introduction to music');
 insert into CUSTOMERS (USERID, NAME, EMAIL, TIMESTARTED)
 values(123,'Jay-Z', 'jayz@gmail.com','2012-05-12 00:00:00.0');
 

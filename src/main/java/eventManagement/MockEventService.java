@@ -29,8 +29,9 @@ public class MockEventService implements EventService {
 	}
 
 	@Override
-	public void createEvent(Event event) {
+	public Event createEvent(Event event) {
 		events.add(event);
+		return event;
 	}
 
 	@Override
