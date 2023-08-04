@@ -19,27 +19,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class RestAPI {
 	
-	static CustomerService customerService = new MockCustomerService();
 	@Autowired
-	private EventService eventDao;
+	private EventService eventService;
 	
 	@CrossOrigin
 	@GetMapping("/events")
 	public Collection<Event> getAllEvents() {
-		return eventDao.getEvents();
+		return eventService.getEvents();
 	}
 	
 	@CrossOrigin
 	@GetMapping("/events/{id}")
 	public Event getEvent(@PathVariable("id") int id) {
-		return eventDao.getEventById(id);
+		return eventService.getEventById(id);
 	}
 	
 	@CrossOrigin
 	@PostMapping("/events")
 	public Event addNewEvent(@RequestBody Event event) {
 //		System.out.println(event.toString());
-		eventDao.createEvent(event);
+		eventService.createEvent(event);
 //		System.out.println("I am inside addNewEvent");
 //		//eventService.createEvent(event);
 		return event;
@@ -51,20 +50,20 @@ public class RestAPI {
 		System.out.println("What is the event's information? Inside updateEvent: " + event.toString());
 		
 		try {
-			Event e = eventDao.getEventById(id);
+			Event e = eventService.getEventById(id);
 			System.out.println("inside updateEvent. Trying to create an event: " + e);
 			if (e == null) {
 				event.setId((long) 0);
 				System.out.println("e is null. event is now set with id 0: " + event.toString());
-				eventDao.createEvent(event);
+				eventService.createEvent(event);
 			} else {
 				//update - figure out if the id is consistent.
-				eventDao.update(id, event);
+				eventService.update(id, event);
 			}
 		} catch (Exception e) {
 			event.setId((long) 0);
 			System.out.println("inside the catch block");
-			eventDao.createEvent(event);
+			eventService.createEvent(event);
 		}
 		
 		return event;
@@ -73,39 +72,8 @@ public class RestAPI {
 	@CrossOrigin
 	@DeleteMapping("/events/{id}")
 	public void deleteEvent(@PathVariable("id") int id) {
-		eventDao.delete(id);
+		eventService.delete(id);
 	}
 	
-	@CrossOrigin
-	@GetMapping("/customers")
-	public Collection<Customer> getAllCustomers() {
-		return customerService.getCustomers();
-	}
-	
-	@CrossOrigin
-	@GetMapping("/customer/{id}")
-	public Customer getCustomer(@PathVariable("id") int id) {
-		return customerService.getCustomerById(id);
-	}
-	
-	@CrossOrigin
-	@PostMapping("/customers")
-	public Customer addCustomer(@RequestBody Customer customer) {
-		customerService.createCustomer(customer);
-		return customer;
-	}
-	
-	@CrossOrigin
-	@PutMapping("/customers/{id}")
-	public Customer updateCustomer(@PathVariable("id") int id, Customer customer) {
-		customerService.update(id, customer);
-		return customer;
-	}
-	
-	@CrossOrigin
-	@DeleteMapping("/customers/{id}")
-	public void deleteCustomer(@PathVariable("id") int id) {
-		customerService.delete(id);
-	}
 	
 }
