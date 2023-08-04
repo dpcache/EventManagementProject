@@ -21,12 +21,13 @@ public class RestAPI {
 	
 	static EventService eventService = new MockEventService();
 	static RegistrationService registrationService = new MockRegistrationService();
+	
 	@Autowired
 	private RegistrationDAO registrationDAO;
 
-//		@PostMapping
-//		@PutMapping("/{eventId}")
-//		@DeleteMapping("/{eventId}")
+//		@PostMapping				// create registration object
+//		@PutMapping("/{eventId}")	// update/set id equivalent
+//		@DeleteMapping("/{eventId}")// delete
 		
 	
 	//	return all registrations
@@ -34,16 +35,39 @@ public class RestAPI {
 	@GetMapping("/registrations")
 	public Collection<Registration> getAllRegistrations()
 	{
-		System.out.println("testttttt");
-		return registrationDAO.getAllRegistrations();
+		return registrationService.getRegistrations();
 	}
 
 	//	return registrations with a specific registrationId (id)
 	@CrossOrigin
-	@GetMapping("/registrations/{registrationId}")
-	public Registration getRegistrationId(@PathVariable("registrationId") int registrationId)
+	@GetMapping("/registrations/{id}")
+	public Registration getRegistration(@PathVariable("id") int id)
 	{
-		return registrationDAO.getRegistrationById(registrationId);
+		return registrationService.getRegistrationById(id);
+	}
+
+	@CrossOrigin
+	@PostMapping("/registrations")
+	public Registration addNewRegistrations(@RequestBody Registration registration)
+	{
+		registrationService.createRegistration(registration);
+		return registration;
+	}
+	
+	@CrossOrigin
+	@PutMapping("/registrations/{id}")
+	public Registration updateRegistrations(@PathVariable("id") int id, Registration registrations)
+	{
+		registrationService.update(id, registrations);
+		return registrations;
+	}
+	
+	@CrossOrigin
+	@DeleteMapping("/registrations/{id}")
+	public void deleteRegistration(@PathVariable("id") int id)
+	{
+		System.out.println("In deleteEvent method.");
+		registrationService.delete(id);
 	}
 	
 	static CustomerService customerService = new MockCustomerService();
