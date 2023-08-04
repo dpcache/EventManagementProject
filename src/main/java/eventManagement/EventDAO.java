@@ -14,11 +14,13 @@ public class EventDAO implements EventService{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	public void createEvent(Event event) {
-        String sql = "INSERT INTO EVENTS (CODE, TITLE, DESCRIPTION) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, event.getCode(), event.getTitle(), event.getDescription());
+	public Event createEvent(Event event) {
+		System.out.println("Inside createEvent: " + event.toString());
+        String sql = "INSERT INTO EVENTS (EVENTID, CODE, TITLE, DESCRIPTION) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, event.getId(), event.getCode(), event.getTitle(), event.getDescription());
+        return event;
 	}
-	
+
 	public void update(int id, Event event) {
 		String sql = "UPDATE EVENTS SET code=?, title=?, description=? WHERE id=?";
 		jdbcTemplate.update(sql,event.getCode(), event.getTitle(), event.getDescription(), id);
@@ -31,8 +33,6 @@ public class EventDAO implements EventService{
 	}
 
 	public Collection<Event> getEvents() {
-		// Replace this statement with the call to jdbcTemplate.
-		
 		return jdbcTemplate.query("Select * from EVENTS", new
 				BeanPropertyRowMapper<Event>(Event.class));
 	}

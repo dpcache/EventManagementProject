@@ -8,7 +8,7 @@ public interface EventService {
 
 	void update(int id, Event event);
 
-	void createEvent(Event event);
+	Event createEvent(Event event);
 
 	void delete(int id);
 
