@@ -20,10 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestAPI {
 	
 	static EventService eventService = new MockEventService();
-//	static RegistrationService registrationDAO = new MockRegistrationService();
+	static RegistrationService registrationService = new MockRegistrationService();
 	
 	@Autowired
-	private RegistrationDAO registrationDAO;
 
 //		@PostMapping				// create registration object
 //		@PutMapping("/{eventId}")	// update/set id equivalent
@@ -35,7 +34,7 @@ public class RestAPI {
 	@GetMapping("/registrations")
 	public Collection<Registration> getAllRegistrations()
 	{
-		return registrationDAO.getRegistrations();
+		return registrationService.getRegistrations();
 	}
 
 	//	return registrations with a specific registrationId (id)
@@ -43,14 +42,14 @@ public class RestAPI {
 	@GetMapping("/registrations/{id}")
 	public Registration getRegistration(@PathVariable("id") int id)
 	{
-		return registrationDAO.getRegistrationById(id);
+		return registrationService.getRegistrationById(id);
 	}
 
 	@CrossOrigin
 	@PostMapping("/registrations")
 	public Registration addNewRegistrations(@RequestBody Registration registration)
 	{
-		registrationDAO.createRegistration(registration);
+		registrationService.createRegistration(registration);
 		return registration;
 	}
 	
@@ -58,7 +57,7 @@ public class RestAPI {
 	@PutMapping("/registrations/{id}")
 	public Registration updateRegistrations(@PathVariable("id") int id, Registration registrations)
 	{
-		registrationDAO.update(id, registrations);
+		registrationService.update(id, registrations);
 		return registrations;
 	}
 	
@@ -67,7 +66,7 @@ public class RestAPI {
 	public void deleteRegistration(@PathVariable("id") int id)
 	{
 		System.out.println("In deleteEvent method.");
-		registrationDAO.delete(id);
+		registrationService.delete(id);
 	}
 	
 	static CustomerService customerService = new MockCustomerService();

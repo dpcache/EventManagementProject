@@ -1,5 +1,7 @@
 package eventManagement;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 //	KEEP BEAN AND API SEPERATE (generally)
@@ -8,20 +10,20 @@ public class Registration
 	@Id
 	int id;	//	registrationId in RegistrationAPI.java
 	int event_id;
-	java.util.Date registration_date;
-	String notes;
+	int customer_id;
 	
 	public Registration() {}
-
-	public Registration(int id, int event_id, java.util.Date registration_date, String notes)
+	
+	public Registration(int id, int event_id, int customer_id, Date registration_date, String notes)
 	{
 		this.id = id;
 		this.event_id = event_id;
+		this.customer_id = customer_id;
 		this.registration_date = registration_date;
 		this.notes = notes;
 	}
 
-	public int getId()
+	public int getId() 
 	{
 		return id;
 	}
@@ -39,6 +41,16 @@ public class Registration
 	public void setEvent_id(int event_id)
 	{
 		this.event_id = event_id;
+	}
+
+	public int getCustomer_id()
+	{
+		return customer_id;
+	}
+
+	public void setCustomer_id(int customer_id)
+	{
+		this.customer_id = customer_id;
 	}
 
 	public java.util.Date getRegistration_date()
@@ -60,4 +72,8 @@ public class Registration
 	{
 		this.notes = notes;
 	}
+
+	java.util.Date registration_date;
+	String notes;
+
 }

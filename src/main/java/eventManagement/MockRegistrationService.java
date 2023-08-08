@@ -10,9 +10,9 @@ public class MockRegistrationService implements RegistrationService {
 	//mock data for registration
 	static ArrayList<Registration> registrations = new ArrayList<Registration>();
 	static {
-			Registration r1 = new Registration(1, 5, new Date(), "will this work?");
-			Registration r2 = new Registration(2, 3, new Date(), "will this work??");
-			Registration r3 = new Registration(3, 9, new Date(), "will this work???");
+			Registration r1 = new Registration(1, 2, 5, new Date(), "will this work?");
+			Registration r2 = new Registration(2, 2, 3, new Date(), "will this work??");
+			Registration r3 = new Registration(3, 2, 9, new Date(), "will this work???");
 			registrations.add(r1);
 			registrations.add(r2);
 			registrations.add(r3);
@@ -29,8 +29,9 @@ public class MockRegistrationService implements RegistrationService {
 	}
 
 	@Override
-	public void createRegistration(Registration registration) {
+	public Registration createRegistration(Registration registration) {
 		registrations.add(registration);
+		return registration;
 	}
 
 	@Override

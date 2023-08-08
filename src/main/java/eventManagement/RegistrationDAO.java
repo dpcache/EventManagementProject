@@ -14,9 +14,10 @@ public class RegistrationDAO implements RegistrationService
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	public void createRegistration(Registration registration) {
-        String sql = "INSERT INTO REGISTRATIONS (REGISTRATIONID, EVENT_ID, REGISTRATION_DATE, NOTES) VALUES (?, ?, ?, ?)";
+	public Registration createRegistration(Registration registration) {
+        String sql = "INSERT INTO REGISTRATIONS (REGISTRATIONID, EVENT_ID, CUSTOMER_ID REGISTRATION_DATE, NOTES) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, registration.getEvent_id(), registration.getRegistration_date(), registration.getNotes());
+        return registration;
 	}
 	
 	public void update(int id, Registration registration) {
