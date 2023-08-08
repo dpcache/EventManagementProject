@@ -66,9 +66,61 @@ public class RestAPI {
 		registrationService.delete(id);
 	}
 	
-	static CustomerService customerService = new MockCustomerService();
 	@Autowired
 	private EventService eventService;
+	
+	@Autowired
+	private CustomerService customerService;
+	
+	@CrossOrigin
+	@GetMapping("/customers")
+	public Collection<Customer> getAllCustomers() {
+		return customerService.getCustomers();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/customers/{id}")
+	public Customer getCustomers(@PathVariable("id") int id) {
+		return customerService.getCustomerById(id);
+	}
+	
+	@CrossOrigin
+	@PostMapping("/customers")
+	public Customer addNewCustomer(@RequestBody Customer customer) {
+		customerService.createCustomer(customer);
+		return customer;
+	}
+	
+	@CrossOrigin
+	@PutMapping("/customers/{id}")
+	public Customer updateCustomer(@PathVariable("id") int id, @RequestBody Customer customer) {
+		System.out.println("What is the event's information? Inside updateEvent: " + customer.toString());
+		
+		try {
+			Event e = eventService.getEventById(id);
+			System.out.println("inside updateEvent. Trying to create an event: " + e);
+			if (e == null) {
+				customer.setId((long) 0);
+				System.out.println("e is null. event is now set with id 0: " + customer.toString());
+				customerService.createCustomer(customer);
+			} else {
+				//update - figure out if the id is consistent.
+				customerService.update(id, customer);
+			}
+		} catch (Exception e) {
+			customer.setId((long) 0);
+			System.out.println("inside the catch block");
+			customerService.createCustomer(customer);
+		}
+		
+		return customer;
+	}
+	
+	@CrossOrigin
+	@DeleteMapping("/customers/{id}")
+	public void deleteCustomer(@PathVariable("id") int id) {
+		customerService.delete(id);
+	}
 	
 	@CrossOrigin
 	@GetMapping("/events")

@@ -2,24 +2,31 @@ package eventManagement;
 
 public class Customer {
 	
-	private int id;
+	// Name, Email, Password
+	private Long id;
 	private String name, email, password;
-	private java.sql.Timestamp timeStarted;
+	//private java.sql.Timestamp timeStarted;
 	
 	public Customer() {};
 
-	public Customer(int id, String name, String email, String password) {
+	public Customer(Long id, String name, String email, String password) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
 	}
 	
-	public int getId() {
+	public Customer(String name, String email, String password) {
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+	
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -47,12 +54,12 @@ public class Customer {
 		this.password = password;
 	}
 	
-	public java.sql.Timestamp getTimeStarted() {
-		return timeStarted;
-	}
-
-	public void setTimeStarted(java.sql.Timestamp timeStarted) {
-		this.timeStarted = timeStarted;
-	}
+//	public java.sql.Timestamp getTimeStarted() {
+//		return timeStarted;
+//	}
+//
+//	public void setTimeStarted(java.sql.Timestamp timeStarted) {
+//		this.timeStarted = timeStarted;
+//	}
 	
 }

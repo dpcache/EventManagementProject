@@ -20,3 +20,5 @@ values(123,'Jay-Z', 'jayz@gmail.com','2012-05-12 00:00:00.0');
 --values ('3', '20', '2022-01-15T00:00:00.000+0000', 'thanks Cameron');
 insert into REGISTRATIONS (REGISTRATIONID, EVENT_ID, REGISTRATION_DATE, NOTES) 
 values ( 1, 3, '2019-01-13 00:00:00.0', 'na' )
+insert into CUSTOMERS (CUSTOMERID, NAME, EMAIL, PASSWORD)
+values(1, 'Jay-Z', 'jayz@gmail.com','2abcd123');
