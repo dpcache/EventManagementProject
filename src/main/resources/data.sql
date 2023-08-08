@@ -10,13 +10,17 @@ insert into EVENTS (CODE, TITLE, DESCRIPTION)
 values('CMSC399', 'Intro to Music', 'introduction to music');
 insert into CUSTOMERS (CUSTOMERID, NAME, EMAIL, PASSWORD)
 values(1, 'Jay-Z', 'jayz@gmail.com','2abcd123');
+insert into CUSTOMERS (CUSTOMERID, NAME, EMAIL, PASSWORD)
+values(2, 'Hailey', 'haiiley@gmail.com','Thomas');
+insert into CUSTOMERS (CUSTOMERID, NAME, EMAIL, PASSWORD)
+values(1, 'Joe', 'joe@gmail.com','rogan');
 insert into REGISTRATIONS (EVENT_ID, CUSTOMER_ID, REGISTRATION_DATE, NOTES)
-values ('1', '2', '2019-01-13 00:00:00.0', 'omg');
+values (1, 2, '2019-01-13 00:00:00.0', 'omg');
 insert into REGISTRATIONS (EVENT_ID, CUSTOMER_ID, REGISTRATION_DATE, NOTES)
-values ('1', '1', '2019-01-13 00:00:00.0', 'i think this finally works');
+values (1, 1, '2019-01-13 00:00:00.0', 'i think this finally works');
 insert into REGISTRATIONS (EVENT_ID, CUSTOMER_ID, REGISTRATION_DATE, NOTES)
-values ('1', '1', '2019-01-13 00:00:00.0', 'it was seriously just a naming issue');
+values (1, 1, '2019-01-13 00:00:00.0', 'it was seriously just a naming issue');
 insert into REGISTRATIONS (EVENT_ID, CUSTOMER_ID, REGISTRATION_DATE, NOTES)
-values ('1', '2', '2019-01-13 00:00:00.0', 'thanks Cameron');
+values (1, 2, '2019-01-13 00:00:00.0', 'thanks Cameron');
 insert into REGISTRATIONS (EVENT_ID, CUSTOMER_ID, REGISTRATION_DATE, NOTES ) 
-values ( '1', '2', '2019-01-13 00:00:00.0', 'na' );
+values (1, 2, '2019-01-13 00:00:00.0', 'na' );
