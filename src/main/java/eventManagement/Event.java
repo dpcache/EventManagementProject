@@ -1,15 +1,17 @@
 package eventManagement;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.Id;
+//@Entity
+//@Table(name="EVENTS")
 public class Event {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id;
 	String code;
 	String title;
@@ -57,6 +59,7 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 	@Override
 	public String toString() {
