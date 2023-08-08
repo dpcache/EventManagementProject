@@ -32,6 +32,15 @@ public class RestAPI {
 	}
 	
 	@CrossOrigin
+	@GetMapping("/customerlist")
+	public CustomerList getAllCustomersAsList() {
+		
+		Collection<Customer> customers = customerService.getCustomers();
+		CustomerList customerList = new CustomerList(customers);
+		return customerList;
+	}
+	
+	@CrossOrigin
 	@GetMapping("/customers/{id}")
 	public Customer getCustomers(@PathVariable("id") int id) {
 		return customerService.getCustomerById(id);
@@ -127,6 +136,7 @@ public class RestAPI {
 	public void deleteEvent(@PathVariable("id") int id) {
 		eventService.delete(id);
 	}
+	
 	
 	
 }
