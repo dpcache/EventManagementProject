@@ -1,12 +1,15 @@
 package eventManagement;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
-@Entity
-@Table(name="EVENTS")
+
+import org.springframework.data.annotation.Id;
+
 public class Event {
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id;
 	String code;
 	String title;
