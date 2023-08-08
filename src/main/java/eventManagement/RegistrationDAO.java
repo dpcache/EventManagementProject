@@ -15,7 +15,7 @@ public class RegistrationDAO implements RegistrationService
 	JdbcTemplate jdbcTemplate;
 	
 	public void createRegistration(Registration registration) {
-        String sql = "INSERT INTO REGISTRATIONS (EVENT_ID, REGISTRATION_DATE, NOTES) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO REGISTRATIONS (REGISTRATIONID, EVENT_ID, REGISTRATION_DATE, NOTES) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, registration.getEvent_id(), registration.getRegistration_date(), registration.getNotes());
 	}
 	
