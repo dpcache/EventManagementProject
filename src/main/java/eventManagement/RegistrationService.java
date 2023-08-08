@@ -8,7 +8,7 @@ public interface RegistrationService {
 
 	void update(int id, Registration registration);
 
-	Registration createRegistration(Registration registration);
+	void createRegistration(Registration registration);
 
 	void delete(int id);
 

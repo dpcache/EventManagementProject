@@ -29,9 +29,8 @@ public class MockRegistrationService implements RegistrationService {
 	}
 
 	@Override
-	public Registration createRegistration(Registration registration) {
+	public void createRegistration(Registration registration) {
 		registrations.add(registration);
-		return registration;
 	}
 
 	@Override

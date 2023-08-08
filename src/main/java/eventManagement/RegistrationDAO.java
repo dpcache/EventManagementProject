@@ -13,33 +13,36 @@ public class RegistrationDAO implements RegistrationService
 {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-	
-	public Registration createRegistration(Registration registration) {
-        String sql = "INSERT INTO REGISTRATIONS (REGISTRATIONID, EVENT_ID, CUSTOMER_ID REGISTRATION_DATE, NOTES) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, registration.getEvent_id(), registration.getRegistration_date(), registration.getNotes());
-        return registration;
-	}
-	
-	public void update(int id, Registration registration) {
-		String sql = "UPDATE REGISTRATIONS SET event_id=?, registration_date=?, notes=? WHERE id=?";
-		jdbcTemplate.update(sql,registration.getEvent_id(), registration.getRegistration_date(), registration.getNotes(), id);
-	}
-	
-	
-	public void delete(int id) {
-		String sql = "DELETE FROM REGISTRATIONS WHERE id=?";
-		jdbcTemplate.update(sql,id);
-	}
 
+	@Override
 	public Collection<Registration> getRegistrations() {
-		// Replace this statement with the call to jdbcTemplate.
-		
 		return jdbcTemplate.query("Select * from REGISTRATIONS", new
 				BeanPropertyRowMapper<Registration>(Registration.class));
 	}
 
+	@Override
+	public void update(int id, Registration registration) {
+		String sql = "UPDATE REGISTRATIONS SET EVENT_ID=?, CUSTOMER_ID=?, REGISTRATION_DATE=?, NOTES=?";
+		jdbcTemplate.update(sql, registration.getEvent_id(), registration.getCustomer_id(), registration.getRegistration_date(), registration.getNotes());
+	}
+
+	@Override
+	public void createRegistration(Registration registration) {
+		System.out.println("Inside createRegistration: " + registration.toString());
+        String sql = "INSERT INTO REGISTRATIONS (EVENT_ID, CUSTOMER_ID, REGISTRATION_DATE, NOTES) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, registration.getEvent_id(), registration.getCustomer_id(), registration.getRegistration_date(), registration.getNotes());
+	}
+
+	@Override
+	public void delete(int id) {
+		String sql = "DELETE FROM REGISTRATIONS WHERE id=?";
+		jdbcTemplate.update(sql,id);
+		
+	}
+
+	@Override
 	public Registration getRegistrationById(int id) {
-		String sql = "SELECT * FROM REGISTRATIONS WHERE id = ?";
+		String sql = "SELECT * FROM EVENTS WHERE id = ?";
 		List<Registration> registrations = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Registration.class), id);
 		return registrations.isEmpty() ? null : registrations.get(0);
 	}
