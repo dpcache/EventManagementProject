@@ -8,6 +8,6 @@ insert into EVENTS (EVENTID, CODE, TITLE, DESCRIPTION)
 values(1, 'FMSC170', 'Family Science', 'Learn about xyz');
 insert into EVENTS (EVENTID, CODE, TITLE, DESCRIPTION)
 values(2, 'CMSC399', 'Intro to Music', 'introduction to music');
-insert into CUSTOMERS (USERID, NAME, EMAIL, TIMESTARTED)
-values(123,'Jay-Z', 'jayz@gmail.com','2012-05-12 00:00:00.0');
+insert into CUSTOMERS (CUSTOMERID, NAME, EMAIL, PASSWORD)
+values(1, 'Jay-Z', 'jayz@gmail.com','2abcd123');
 
