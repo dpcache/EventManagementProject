@@ -19,15 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class RestAPI {
 	
-	static EventService eventService = new MockEventService();
-	static RegistrationService registrationService = new MockRegistrationService();
+	@Autowired
+	private EventService eventService;
 	
 	@Autowired
-
-//		@PostMapping				// create registration object
-//		@PutMapping("/{eventId}")	// update/set id equivalent
-//		@DeleteMapping("/{eventId}")// delete
-		
+	private RegistrationService registrationService;
 	
 	//	return all registrations
 	@CrossOrigin
