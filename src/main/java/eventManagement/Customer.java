@@ -1,7 +1,5 @@
 package eventManagement;
 
-import java.sql.Timestamp;
-
 public class Customer {
 	
 	// Name, Email, Password

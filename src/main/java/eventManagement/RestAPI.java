@@ -23,6 +23,67 @@ public class RestAPI {
 	private EventService eventService;
 	
 	@Autowired
+	private RegistrationService registrationService;
+	
+	//	return all registrations
+	@CrossOrigin
+	@GetMapping("/registrations")
+	public Collection<Registration> getAllRegistrations()
+	{
+		return registrationService.getRegistrations();
+	}
+
+	//	return registrations with a specific registrationId (id)
+	@CrossOrigin
+	@GetMapping("/registrations/{id}")
+	public Registration getRegistration(@PathVariable("id") int id)
+	{
+		return registrationService.getRegistrationById(id);
+	}
+
+	@CrossOrigin
+	@PostMapping("/registrations")
+	public Registration addNewRegistrations(@RequestBody Registration registration)
+	{
+		registrationService.createRegistration(registration);
+		return registration;
+	}
+	
+	@CrossOrigin
+	@PutMapping("/registrations/{id}")
+	public Registration updateRegistrations(@PathVariable("id") int id, @RequestBody Registration registration)
+	{
+		try {
+			Registration r = registrationService.getRegistrationById(id);
+			System.out.println("inside updateRegistration. Trying to create a registration: " + r);
+			if (r == null) {
+				registration.setId(0);
+				System.out.println("r is null. registration is now set with id 0: " + registration.toString());
+				registrationService.createRegistration(registration);
+			} else {
+				//update - figure out if the id is consistent.
+				registrationService.update(id, registration);
+				System.out.println("oooooooooooooooooooo can u see into my eyes");
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			registration.setId(0);
+			System.out.println("inside the catch block");
+			registrationService.createRegistration(registration);
+		}
+		
+		return registration;
+	}
+	
+	@CrossOrigin
+	@DeleteMapping("/registrations/{id}")
+	public void deleteRegistration(@PathVariable("id") int id)
+	{
+		System.out.println("In deleteEvent method.");
+		registrationService.delete(id);
+	}
+	
+	@Autowired
 	private CustomerService customerService;
 	
 	@CrossOrigin
@@ -136,7 +197,5 @@ public class RestAPI {
 	public void deleteEvent(@PathVariable("id") int id) {
 		eventService.delete(id);
 	}
-	
-	
 	
 }
