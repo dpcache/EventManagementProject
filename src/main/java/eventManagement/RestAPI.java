@@ -51,10 +51,28 @@ public class RestAPI {
 	
 	@CrossOrigin
 	@PutMapping("/registrations/{id}")
-	public Registration updateRegistrations(@PathVariable("id") int id, Registration registrations)
+	public Registration updateRegistrations(@PathVariable("id") int id, @RequestBody Registration registration)
 	{
-		registrationService.update(id, registrations);
-		return registrations;
+		try {
+			Registration r = registrationService.getRegistrationById(id);
+			System.out.println("inside updateRegistration. Trying to create a registration: " + r);
+			if (r == null) {
+				registration.setId(0);
+				System.out.println("r is null. registration is now set with id 0: " + registration.toString());
+				registrationService.createRegistration(registration);
+			} else {
+				//update - figure out if the id is consistent.
+				registrationService.update(id, registration);
+				System.out.println("oooooooooooooooooooo can u see into my eyes");
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			registration.setId(0);
+			System.out.println("inside the catch block");
+			registrationService.createRegistration(registration);
+		}
+		
+		return registration;
 	}
 	
 	@CrossOrigin

@@ -22,8 +22,8 @@ public class RegistrationDAO implements RegistrationService
 
 	@Override
 	public void update(int id, Registration registration) {
-		String sql = "UPDATE REGISTRATIONS SET EVENT_ID=?, CUSTOMER_ID=?, REGISTRATION_DATE=?, NOTES=?";
-		jdbcTemplate.update(sql, registration.getEvent_id(), registration.getCustomer_id(), registration.getRegistration_date(), registration.getNotes());
+		String sql = "UPDATE REGISTRATIONS SET EVENT_ID=?, CUSTOMER_ID=?, REGISTRATION_DATE=?, NOTES=? WHERE id=?";
+		jdbcTemplate.update(sql, registration.getEvent_id(), registration.getCustomer_id(), registration.getRegistration_date(), registration.getNotes(), id);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class RegistrationDAO implements RegistrationService
 
 	@Override
 	public Registration getRegistrationById(int id) {
-		String sql = "SELECT * FROM EVENTS WHERE id = ?";
+		String sql = "SELECT * FROM REGISTRATIONS WHERE id = ?";
 		List<Registration> registrations = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Registration.class), id);
 		return registrations.isEmpty() ? null : registrations.get(0);
 	}
