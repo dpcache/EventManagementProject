@@ -25,6 +25,15 @@ public class RestAPI {
 	@Autowired
 	private CustomerService customerService;
 	
+	@Autowired 
+	private RegistrationService registrationService;
+	
+	@CrossOrigin
+	@GetMapping("/registrations")
+	public Collection<Registration> getAllRegistrations() {
+		return registrationService.getRegistrations();
+	}
+	
 	@CrossOrigin
 	@GetMapping("/customers")
 	public Collection<Customer> getAllCustomers() {
