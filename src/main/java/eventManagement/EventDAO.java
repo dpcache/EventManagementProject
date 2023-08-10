@@ -16,8 +16,8 @@ public class EventDAO implements EventService{
 
 	public Event createEvent(Event event) {
 		System.out.println("Inside createEvent: " + event.toString());
-        String sql = "INSERT INTO EVENTS (EVENTID, CODE, TITLE, DESCRIPTION) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, event.getId(), event.getCode(), event.getTitle(), event.getDescription());
+        String sql = "INSERT INTO EVENTS (CODE, TITLE, DESCRIPTION) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, event.getCode(), event.getTitle(), event.getDescription());
         return event;
 	}
 
