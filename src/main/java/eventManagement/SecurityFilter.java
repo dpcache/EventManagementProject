@@ -28,14 +28,17 @@ public class SecurityFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		String uri = req.getRequestURI();
 		System.out.println(uri);
-		
-		if (uri.startsWith("/api/customers")) {
+		if (uri.startsWith("/api/privatecustomer") || uri.startsWith("/api/customerlist")) {
+			chain.doFilter(request, response);
+			return;
+		}
+		if (uri.startsWith("/api")) {
 			// check JWT token
 			System.out.println("Doing a security check...");
 			String authheader = req.getHeader("authorization");
 			System.out.println(authheader);
 			/* Tighten this up if you can. */
-			if (authheader != null 	&& authheader.length() > 10) {
+			if (authheader != null && authheader.length() > 10) {
 				/*
 				 * The user passed the authorization check to keep the chain of execution going.
 				 */

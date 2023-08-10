@@ -102,6 +102,13 @@ public class RestAPI {
 	}
 	
 	@CrossOrigin
+	@PostMapping("/privatecustomer")
+	public Customer addCustomerForRegistration(@RequestBody Customer customer) {
+		customerService.createCustomer(customer);
+		return customer;
+	}
+	
+	@CrossOrigin
 	@GetMapping("/customers/{id}")
 	public Customer getCustomers(@PathVariable("id") int id) {
 		return customerService.getCustomerById(id);
@@ -197,5 +204,8 @@ public class RestAPI {
 	public void deleteEvent(@PathVariable("id") int id) {
 		eventService.delete(id);
 	}
+	
+	
+	
 	
 }
