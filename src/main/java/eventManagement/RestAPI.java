@@ -124,12 +124,12 @@ public class RestAPI {
 	@CrossOrigin
 	@PutMapping("/customers/{id}")
 	public Customer updateCustomer(@PathVariable("id") int id, @RequestBody Customer customer) {
-		System.out.println("What is the event's information? Inside updateEvent: " + customer.toString());
+		System.out.println("What is the customer's information? Inside updateCustomer: " + customer.toString());
 		
 		try {
-			Event e = eventService.getEventById(id);
-			System.out.println("inside updateEvent. Trying to create an event: " + e);
-			if (e == null) {
+			Customer c = customerService.getCustomerById(id);
+			System.out.println("inside updateEvent. Trying to create an event: " + c);
+			if (c == null) {
 				customer.setId((long) 0);
 				System.out.println("e is null. event is now set with id 0: " + customer.toString());
 				customerService.createCustomer(customer);
