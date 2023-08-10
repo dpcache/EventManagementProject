@@ -42,7 +42,7 @@ public class CustomerDAO implements CustomerService{
 
 	@Override
 	public Customer getCustomerById(int id) {
-		String sql = "SELECT * FROM EVENTS WHERE id = ?";
+		String sql = "SELECT * FROM CUSTOMERS WHERE id = ?";
 		List<Customer> customers = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Customer.class), id);
 		return customers.isEmpty() ? null : customers.get(0);
 	}
