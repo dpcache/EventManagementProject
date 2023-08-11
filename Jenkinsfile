@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh "docker build -t EventManagementProject:latest . "
+                sh "docker build -t eventmanagement:latest ."
             }
         }
     }
