@@ -6,14 +6,19 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Compile') {
             steps {
-                sh "gradle clean build"
+                sh "gradle classes"
             }
         }
         stage('Test') {
             steps {
                 sh "gradle test"
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "gradle clean build"
             }
         }
     }
