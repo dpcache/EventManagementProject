@@ -21,6 +21,11 @@ pipeline {
                 sh "gradle clean build"
             }
         }
+        stage('Docker Build') {
+            steps {
+                sh "docker --version"
+            }
+        }
     }
 
 }
